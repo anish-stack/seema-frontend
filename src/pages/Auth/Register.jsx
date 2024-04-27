@@ -68,7 +68,7 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:4000/api/register', formData);
+            const response = await axios.post('https://seemabackend.onrender.com/api/register', formData);
             console.log(response.data);
             toast.success('Registration Successful', {
                 style: {

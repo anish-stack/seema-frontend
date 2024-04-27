@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchSingleData = createAsyncThunk('Single-product/fetchData', async (productName,id) => {
     try {
         console.log(id)
-        const response = await axios.get(`http://localhost:4000/api/get-products-name/${productName}/${id}`);
+        const response = await axios.get(`https://seemabackend.onrender.com/api/get-products-name/${productName}/${id}`);
         return response.data.data; // Return the fetched data
     } catch (error) {
         // Handle errors if any
