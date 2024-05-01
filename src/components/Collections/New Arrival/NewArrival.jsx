@@ -245,9 +245,9 @@ const NewArrival = () => {
                                     </ul>
                                 </div>
                                 <div className='product-information text-center'>
-                                    <p className='text-xl font-medium mb-2'>{item.productName}</p>
+                                    <p className='xl:text-lg text-sm font-medium mb-2'>{item.productName}</p>
                                     <div className='prices'>
-                                        <p className='text-base font-semibold text-[#E51515]'><del className='text-gray-500'>{item.sizes[0].mainPrice}</del> {item.sizes[0].discountPrice}</p>
+                                        <p className='text-base font-semibold text-[#E51515]'> ₹{item.sizes[0].discountPrice}  <del className='text-gray-500'>{item.sizes[0].mainPrice}</del> </p>
                                     </div>
                                 </div>
                                 {/* <h3 className='text-xl font-bold text-red-500'>
