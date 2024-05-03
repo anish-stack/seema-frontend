@@ -133,6 +133,29 @@ const CustomSlider = () => {
                         </div>
                     </div> */}
                 </div>
+                <div className='bg-cover bg-center bg-no-repeat bgss bg-fixed'>
+                    {/* <div className='h-full text-center flex items-center justify-center flex-col'>
+                        <motion.p
+                            variants={textVariantstwo}
+                            initial="initial"
+                            animate={currentSlide === 1 ? "animate" : "initial"}
+                            className='text-black text-pretty drop-shadow-lg uppercase font-medium mb-3 text-3xl'
+                        >
+                            Discount 40% Off
+                        </motion.p>
+                        <motion.h1
+                            variants={textVariantThree}
+                            initial="initial"
+                            animate={currentSlide === 1 ? "animate" : "initial"}
+                            className='text-slate-900 text-pretty uppercase drop-shadow-2xl font-bold mt-2 text-6xl'
+                        >
+                            New Arrivals 2024
+                        </motion.h1>
+                        <div>
+                            <button className='btn-views'>View Shop</button>
+                        </div>
+                    </div> */}
+                </div>
             </Slider>
         </div>
     );
