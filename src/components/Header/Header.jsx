@@ -48,9 +48,24 @@ const Header = () => {
                 </div>
                 <nav className={`${showMenu ? 'showNavBar' : ''}`}>
                     <ul className='flex  md:items-center md:space-x-6'>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/">Home</Link></li>
+                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/">Home</Link></li> 
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shop">Shop</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Women">Women</Link></li>
+                        <li  className='font-medium text-gray-900 text-lg relative dropdown-main'>
+                            <Link  >Women</Link>
+                            <ul className='absolute dropdown-inner z-10'>
+                                <li><Link to="">Women 1</Link></li>
+                                <li><Link to="">Women 1</Link></li>
+                                <li><Link to="">Women 1</Link></li>
+                            </ul>
+                        </li>
+                        <li  className='font-medium text-gray-900 text-lg relative dropdown-main'>
+                            <Link  >Women</Link>
+                            <ul className='absolute dropdown-inner z-10'>
+                                <li><Link to="">Women 1</Link></li>
+                                <li><Link to="">Women 1</Link></li>
+                                <li><Link to="">Women 1</Link></li>
+                            </ul>
+                        </li>
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shirt">Shirt</Link></li>
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Kids-collections">Kids Collections</Link></li>
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/bestseNew Arrivalllers">New Arrival</Link></li>
