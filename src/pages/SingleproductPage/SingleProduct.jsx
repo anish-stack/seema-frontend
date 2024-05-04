@@ -15,7 +15,7 @@ const SingleProduct = () => {
     const dispatch = useDispatch()
     const fetchSingleProduct = useCallback(async () => {
         try {
-            const response = await axios.get(`www.api.naturalcottoncollection.com/api/get-products-name/${name}/${id}`);
+            const response = await axios.get(`https://www.api.naturalcottoncollection.com/api/get-products-name/${name}/${id}`);
             console.log(response.data);
             setProduct(response.data.data); // Assuming response.data is the product object
         } catch (error) {
@@ -98,7 +98,7 @@ const SingleProduct = () => {
         const selectedProduct = {
             ...product,
             size: selectedSize.size,
-            price:sizesDPrize,
+            price: sizesDPrize,
             color: selectedColor || selectedSize.colors.colorValue,
             quantity: quantity // Assuming quantity is already set elsewhere in your code
         };
@@ -150,7 +150,6 @@ const SingleProduct = () => {
                     <div className=' w-full md:w-[600px]  h-[600px] flex md:space-x-3 '>
                         <div className='hidden md:block small-imgs mt-2 px-2'>
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.img : "")} src={product ? product.img : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.secondImg : "")} src={product ? product.secondImg : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.thirdImage : "")} src={product ? product.thirdImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.fourthImage : "")} src={product ? product.fourthImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
@@ -158,7 +157,11 @@ const SingleProduct = () => {
                         <motion.div
 
                             whileTap={{ scale: 0.9 }} className='w-full relative bigimage h-[600px]'>
-                            <img src={product ? product.img : ""} className='w-full h-full object-cover object-center' alt="" />
+                            <img
+                                src={product && product.img ? product.img : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                className='w-full h-full object-cover object-center'
+                                alt=""
+                            />
                             <div className='tag'>
                                 {product ? product.percentage : ""}
                             </div>
@@ -176,7 +179,15 @@ const SingleProduct = () => {
                             <p className='text-4xl font-medium mb-2'>{product ? product.productName : ""}</p>
                             <h3 className='text-2xl mt-6 font-bold text-red-500'>
                                 <span className='text-gray-600'>Offer Price : </span>
-                                <del className='text-gray-500 font-medium'>{sizesPrize ? sizesPrize.mainPrice || product && product.sizes[0].mainPrice : product && product.sizes[0].mainPrice}</del> {sizesPrize ? (sizesPrize.discountPrice ? sizesPrize.discountPrice : product && product.sizes[0].discountPrice) : product && product.sizes[0].discountPrice}
+                                <del className='text-gray-500 font-medium'>
+                                    {sizesPrize ? (
+                                        sizesPrize.mainPrice !== undefined ? sizesPrize.mainPrice : (product && product.sizes && product.sizes[0] && product.sizes[0].mainPrice)
+                                    ) : (product && product.sizes && product.sizes[0] && product.sizes[0].mainPrice)}
+                                </del>
+                                {' '}
+                                {sizesPrize ? (
+                                    sizesPrize.discountPrice !== undefined ? sizesPrize.discountPrice : (product && product.sizes && product.sizes[0] && product.sizes[0].discountPrice)
+                                ) : (product && product.sizes && product.sizes[0] && product.sizes[0].discountPrice)}
                             </h3>
                             <div className='w-full '>
                                 <p className='text-lg text-pretty mt-4'>{product ? product.description : ""}</p>

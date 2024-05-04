@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchData } from '../../../store/slices/product.slice'
-const NewArrival = () => {
+const Shirt = () => {
     const dispatch = useDispatch();
     const [showQuickView, setShowQucikView] = useState(false)
     const [items, setItems] = useState(false)
@@ -223,13 +223,13 @@ const NewArrival = () => {
     return (
         <div className='w-full mt-12'>
             <div className='text-center py-2 md:py-5'>
-                <h1 className='md:text-3xl text-pretty mb-2 text-2xl font-bold'>New Arrivals</h1>
-                <p className='md:tracking-wide font-meduim text-base md:text-xl	'>Shop the trending products and most buy of the week</p>
+                <h1 className='md:text-3xl text-pretty mb-2 text-2xl font-bold'>Shirt Collection</h1>
+                {/* <p className='md:tracking-wide font-meduim text-base md:text-xl	'>Shop the trending products and most buy of the week</p> */}
             </div>
             <div className='mt-5 p-2'>
                 <div className='w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 space-x-3 gap-2'>
                     {data && data.map((item, index) => (
-                         item.categories === "New Arrivals" ||  item.categories === "New Arrival" ? (
+                         item.categories === "Shirt" ||  item.categories === "Shirt" ? (
                         <div className=' p-1 md:p-2' key={index}>
                             <div className='relative first-img '>
                                 <Link className='relative first-img' to={`/single-product/${item._id}/${item.productName}`}>
@@ -263,11 +263,10 @@ const NewArrival = () => {
                 ):null
 
             ))}
-                
                 </div>
             </div>
             <QucikView showQuickView={showQuickView} handleClose={handleClose} item={items} />
         </div>)
 }
 
-export default NewArrival
+export default Shirt

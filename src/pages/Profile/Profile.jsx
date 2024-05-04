@@ -26,7 +26,7 @@ const Profile = () => {
 
     const handleFindMyOrder = async () => {
         try {
-            const response = await axios.get('www.api.naturalcottoncollection.com/api/get-My-Orders', {
+            const response = await axios.get('https://www.api.naturalcottoncollection.com/api/get-My-Orders', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

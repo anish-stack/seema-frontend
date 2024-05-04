@@ -69,7 +69,7 @@ const CheckOut = () => {
         }
 
         try {
-            const response = await axios.post('www.api.naturalcottoncollection.com/api/Make-Orders', formData, {
+            const response = await axios.post('https://www.api.naturalcottoncollection.com/api/Make-Orders', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

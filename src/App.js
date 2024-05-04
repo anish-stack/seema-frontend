@@ -16,6 +16,9 @@ import ReturnRefundPolicy from './pages/Terms/Return';
 import TermsAndConditions from './pages/Terms/TermCondition';
 import PaymentPage from './pages/Payement/PayemntPage';
 import Profile from './pages/Profile/Profile';
+import Women from './components/Collections/New Arrival/Women';
+import Shirt from './components/Collections/New Arrival/Shirt';
+import Kids from './components/Collections/New Arrival/Kids';
 
 function App() {
   return (
@@ -35,6 +38,14 @@ function App() {
         <Route path="/Return-And-Refund-Policy" element={<ReturnRefundPolicy />} />
         <Route path="/Terms-And-Conditions" element={<TermsAndConditions />} />
         <Route path="/Payment-Status/:txn" element={<PaymentPage />} />
+        <Route path="/Women" element={<Women />} />
+        <Route path="/Shirt" element={<Shirt />} />
+        <Route path="/Kids-collections" element={<Kids />} />
+
+
+        
+
+
 
 
 
@@ -43,6 +54,9 @@ function App() {
 
         <Route path="/shop" element={
           <>
+          <Shirt/>
+          <Women/>
+          <Kids/>
             <NewArrival />
             <WeeksHighlight />
           </>

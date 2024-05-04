@@ -22,16 +22,16 @@ const CollectionWithBanner = () => {
             </div>
           </div>
           <div className='w-full hovers transition-all ease-in-out rounded-xl  md:h-[70vh]  relative shadow-2xl'>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtFdqAZ3HG2iyYD7XX3pYDOJ79MEO-AYEoVgkTcOghCg&s"className='w-full h-full transition-all ease-in-out object-cover object-center' alt="" />
+            <img src="https://www.bonsoir.co.in/cdn/shop/articles/blog-59_copy_1024x1024.jpg?v=1616490224"className='w-full h-full transition-all ease-in-out object-cover object-center' alt="" />
             <div className='content'>
-              <div>
+              {/* <div>
                 <h2 className='text-gray-900'> Beautiful Women Saree</h2>
                 <h2>Collection</h2>
                 <p className='text-white'>We have a wide range of styles, which includes the beautiful ombre-dyed sarees, georgette sarees, embroidered and printed sarees ...
 </p>
 
                 <button className='btn-views'>View Collection</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
