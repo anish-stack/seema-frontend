@@ -32,7 +32,7 @@ const Login = () => {
 
 
         try {
-            const response = await axios.post('https://seemabackend.onrender.com/api/login', formData);
+            const response = await axios.post('www.api.naturalcottoncollection.com/api/login', formData);
             console.log(response.data);
             toast.success('Login Successful', {
                 style: {

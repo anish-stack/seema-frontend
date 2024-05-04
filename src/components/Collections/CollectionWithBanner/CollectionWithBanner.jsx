@@ -22,7 +22,7 @@ const CollectionWithBanner = () => {
             </div>
           </div>
           <div className='w-full hovers transition-all ease-in-out rounded-xl  md:h-[70vh]  relative shadow-2xl'>
-            <img src="https://i.ibb.co/KwQ9jpH/image.png"className='w-full h-full transition-all ease-in-out object-cover object-center' alt="" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtFdqAZ3HG2iyYD7XX3pYDOJ79MEO-AYEoVgkTcOghCg&s"className='w-full h-full transition-all ease-in-out object-cover object-center' alt="" />
             <div className='content'>
               <div>
                 <h2 className='text-gray-900'> Beautiful Women Saree</h2>
