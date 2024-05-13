@@ -43,7 +43,7 @@ function App() {
         <Route path="/Kids-collections" element={<Kids />} />
 
 
-        
+
 
 
 
@@ -54,13 +54,19 @@ function App() {
 
         <Route path="/shop" element={
           <>
-          <Shirt/>
-          <Women/>
-          <Kids/>
+            <Shirt />
+            <Women />
+            <Kids />
             <NewArrival />
             <WeeksHighlight />
           </>
         } />
+
+        <Route path='/Mens-Kurta' element={<Shirt/>} />
+        <Route path='/Kids' element={<Kids/>} />
+        <Route path='/Kurta' element={<WeeksHighlight/>} />
+
+
 
 
 

@@ -229,7 +229,7 @@ const NewArrival = () => {
             <div className='mt-5 p-2'>
                 <div className='w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 space-x-3 gap-2'>
                     {data && data.map((item, index) => (
-                         item.categories === "New Arrivals" ||  item.categories === "New Arrival" ? (
+                        
                         <div className=' p-1 md:p-2' key={index}>
                             <div className='relative first-img '>
                                 <Link className='relative first-img' to={`/single-product/${item._id}/${item.productName}`}>
@@ -260,7 +260,7 @@ const NewArrival = () => {
                             </div>
                         </div>
                  
-                ):null
+              
 
             ))}
                 

@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import logo from './logosemaa.png'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
+    const [item, setItem] = useState()
+    const [dropdown, setDropdown] = useState()
+
     const handleToggle = () => {
         setShowMenu(!showMenu)
     }
@@ -15,6 +19,31 @@ const Header = () => {
     console.log(cartItems.items.length);
     const User = useSelector(state => state.register)
 
+    const handleFetchMainCategorey = async () => {
+        try {
+            const res = await axios.get('http://localhost:4234/api/get-all-main-category')
+            // console.log(res.data.data)
+            setItem(res.data.data)
+        } catch (error) {
+            console.log(`error`)
+        }
+    }
+    const handleFetchSubCategory = async (item) => {
+        try {
+            const res = await axios.get(`http://localhost:4234/api/get-title/${item}`)
+            console.log(res.data.data)
+            setDropdown(res.data.data)
+        } catch (error) {
+            console.log(`error`)
+        }
+    }
+    const handleRemoveSubCategory = () => {
+        setDropdown(null)
+    }
+    useEffect(() => {
+        handleFetchMainCategorey()
+        handleFetchSubCategory()
+    }, [])
     return (
         <header className='bg-banner'>
             <div className="top-header">
@@ -50,10 +79,17 @@ const Header = () => {
                     <ul className='flex  md:items-center md:space-x-6'>
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/">Home</Link></li>
                         <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shop">Shop</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Women">Women</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shirt">Shirt</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Kids-collections">Kids Collections</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/bestseNew Arrivalllers">New Arrival</Link></li>
+                        {item && item.map((item, index) => (
+                            <li onMouseEnter={() => handleFetchSubCategory(item)} className='font-medium relative text-gray-900 text-lg ' key={index}>{item}</li>
+                        ))}
+                        <div onMouseLeave={handleRemoveSubCategory} className='dropdown'>
+                            {dropdown && dropdown.map((drop, index) => {
+                                return (
+                                    <Link to={`/Category-Product/${drop}`} key={index}>{drop}</Link>
+                                );
+                            })}
+                        </div>
+
                     </ul>
                 </nav>
                 <div className='btns-ctas smhidden space-x-4'>

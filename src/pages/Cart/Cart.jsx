@@ -134,7 +134,7 @@ const Cart = () => {
                             {/* <p className="text-sm text-gray-700">including VAT</p> */}
                         </div>
                     </div>
-                    <button onClick={CheckOutWithData} className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
+                    <button onClick={CheckOutWithData} disabled={cartItems.items.length === 0} className={`mt-6 w-full rounded-md py-1.5 font-medium text-white ${cartItems.items.length === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'}`}>Check out</button>
                 </div>
             </div>
         </div>

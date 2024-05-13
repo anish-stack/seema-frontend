@@ -12,10 +12,11 @@ import { addItem } from '../../store/slices/CartSlice';
 const SingleProduct = () => {
     const { name, id } = useParams();
     const [product, setProduct] = useState(null);
+    const [selectedSize, setSelectedSize] = useState(null);
     const dispatch = useDispatch()
     const fetchSingleProduct = useCallback(async () => {
         try {
-            const response = await axios.get(`https://www.api.naturalcottoncollection.com/api/get-products-name/${name}/${id}`);
+            const response = await axios.get(`http://localhost:4234/api/get-products-name/${name}/${id}`);
             console.log(response.data);
             setProduct(response.data.data); // Assuming response.data is the product object
         } catch (error) {
@@ -62,6 +63,7 @@ const SingleProduct = () => {
     };
     const handleClickSizes = (sizes) => {
         // console.log(sizes.)
+        setSelectedSize(sizes)
         setSizePrize(sizes)
         setDSizePrize(sizes.discountPrice)
     }
@@ -211,7 +213,7 @@ const SingleProduct = () => {
                                         <li className='m-2 text-xl font-bold text-gray-900' key={index}>
                                             <span
                                                 onClick={() => handleClickColor(index, sizeItem.colors.colorValue)}
-                                                className={`inline-block w-6 h-6 mr-2 cursor-pointer rounded-full ${selectedColorIndex === index ? 'outline' : ''}`}
+                                                className={`inline-block w-6 h-6 mr-2 cursor-pointer rounded-full ${selectedColorIndex === index ? 'outline outline-dashed outline-green-500' : 'outline'}`}
                                                 style={{ backgroundColor: sizeItem.colors.colorValue }}
                                             ></span>
                                         </li>
@@ -219,11 +221,18 @@ const SingleProduct = () => {
                                 </ul>
                             </div>
 
-                            <div className='sizes flex items-start  gap-3 mt-2'>
-                                {product && product.sizes.map((sizes, index) => (
-                                    <div onClick={() => handleClickSizes(sizes)} className='bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white' key={index}>{sizes.size}</div>
-                                ))}
+                            <div className='sizes flex items-start gap-3 mt-2'>
+                            {product && product.sizes.map((size, index) => (
+                <div
+                    onClick={() => handleClickSizes(size)}
+                    className={`bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white ${selectedSize === size ? 'bg-green-400' : ''}`}
+                    key={index}
+                >
+                    {size.size}
+                </div>
+            ))}
                             </div>
+
                             <div className='flex  mt-5 items-start justify-between'>
                                 <div className="flex justify-between border-2 w-[40%]  rounded-[40px] border-black items-center">
                                     <button onClick={handleDecrement} className="  font-extrabold text-lg text-gray-900 px-5 py-1 rounded-md ml-2">-</button>

@@ -10,7 +10,7 @@ const WeeksHighlight = () => {
     const [items, setItems] = useState(false)
     const { data, status, error } = useSelector((state) => state.product);
 
-
+    console.log(data)
     useEffect(() => {
         // Dispatch the fetchData thunk when the component mounts
         dispatch(fetchData());
@@ -226,36 +226,36 @@ const WeeksHighlight = () => {
                 <p className='md:tracking-wide font-meduim text-base md:text-xl	'>Shop the trending products and most buy of the week</p>
             </div>
             <div className='mt-5 p-2'>
-    <div className='w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 space-x-3 gap-2'>
-        {data && data.map((item, index) => (
-            (item.collectionName.includes("highlights")) && // Corrected condition here
-            <div className='p-1 md:p-2' key={index}>
-                <div className='relative first-img '>
-                    <Link className='relative first-img' to={`/single-product/${item._id}/${item.productName}`}>
-                        <img src={item.img} className='w-full relative transition-all duration-500 ease-linear h-64 md:h-[23rem] object-cover object-center' alt={item.collectionName} />
-                        <img src={item.secondImg} className='w-full transition-all duration-500 ease-linear second-img absolute top-0 opacity-0 h-64 md:h-[23rem] object-cover object-center' alt={item.secondImg} />
-                    </Link>
-                    <div className='buttons'>
-                        <ul>
-                            <li onClick={() => handleShowQuickView(item, index)}><i className="ri-eye-fill"></i></li>
-                            <li><i className="ri-shopping-bag-4-line"></i></li>
-                            <li><i className="ri-heart-fill"></i></li>
-                        </ul>
-                    </div>
-                    <div className='product-information text-center'>
-                        <p className='text-xl font-medium mb-2'>{item.productName}</p>
-                        <div className='prices'>
-                            <p className='text-base font-semibold text-[#E51515]'><del className='text-gray-500'>{item.sizes[0].mainPrice}</del> {item.sizes[0].discountPrice}</p>
+                <div className='w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 space-x-3 gap-2'>
+                    {data && data.map((item, index) => (
+                        (item.categories.includes("Kids Collection")) && // Corrected condition here
+                        <div className='p-1 md:p-2' key={index}>
+                            <div className='relative first-img '>
+                                <Link className='relative first-img' to={`/single-product/${item._id}/${item.productName}`}>
+                                    <img src={item.img} className='w-full relative transition-all duration-500 ease-linear h-64 md:h-[23rem] object-cover object-center' alt={item.collectionName} />
+                                    <img src={item.secondImg} className='w-full transition-all duration-500 ease-linear second-img absolute top-0 opacity-0 h-64 md:h-[23rem] object-cover object-center' alt={item.secondImg} />
+                                </Link>
+                                <div className='buttons'>
+                                    <ul>
+                                        <li onClick={() => handleShowQuickView(item, index)}><i className="ri-eye-fill"></i></li>
+                                        <li><i className="ri-shopping-bag-4-line"></i></li>
+                                        <li><i className="ri-heart-fill"></i></li>
+                                    </ul>
+                                </div>
+                                <div className='product-information text-center'>
+                                    <p className='text-xl font-medium mb-2'>{item.productName}</p>
+                                    <div className='prices'>
+                                        <p className='text-base font-semibold text-[#E51515]'><del className='text-gray-500'>{item.sizes[0].mainPrice}</del> {item.sizes[0].discountPrice}</p>
+                                    </div>
+                                </div>
+                                <div className='tag'>
+                                    {item.percentage}%
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className='tag'>
-                        {item.percentage}%
-                    </div>
+                    ))}
                 </div>
             </div>
-        ))}
-    </div>
-</div>
 
             <QuickView showQuickView={showQuickView} handleClose={handleClose} item={items} />
         </div>)

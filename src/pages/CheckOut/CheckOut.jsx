@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios'
 import toast from 'react-hot-toast';
 const CheckOut = () => {
 
     const items = sessionStorage.getItem('checkOut') || []
+    useEffect(() => {
+        const itemss = JSON.parse(sessionStorage.getItem('checkOut')) || [];
+        if (itemss.length === 0) {
+            window.location.href = "/Shop";
+        }
+    }, []);
     const finalPrice = sessionStorage.getItem('FinalPrice') || {};
     const userInfo = sessionStorage.getItem('user');
     const parsedItem = JSON.parse(items)

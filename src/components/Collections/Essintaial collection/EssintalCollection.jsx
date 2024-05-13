@@ -1,26 +1,31 @@
 import React from 'react'
 import './collection.css'
+import { Link } from 'react-router-dom'
 const EssintalCollection = () => {
     const Data = [
         {
             id: 1,
             img: "https://i.ibb.co/rvgYVm6/image.png",
-            collectionName: "Mens Kurta"
+            collectionName: "Mens",
+            href:"/Mens-Kurta"
         },
         {
             id: 2,
             img: "https://i.ibb.co/VWPPHT5/image.png",
-            collectionName: "Kids Fashion"
+            collectionName: "Kids Fashion",
+            href:"/Kids"
         },
         {
             id: 3,
             img: "https://i.ibb.co/pxVPgWm/image.png",
-            collectionName: "Traditional Kurta"
+            collectionName: "Traditional Kurta",
+            href:"/Kurta"
         },
         {
             id: 4,
             img: "https://i.ibb.co/KwQ9jpH/image.png",
-            collectionName: "Women Sarees"
+            collectionName: "Women Sarees",
+            href:"/Womens-Sarees"
         }
     ]
     return (
@@ -33,12 +38,12 @@ const EssintalCollection = () => {
                 <div className='w-full grid grid-cols-2 md:grid-cols-4 space-x-3 gap-2'>
                     {Data.map((item, index) => (
                         <div className=' p-1 md:p-2' key={index}>
-                            <div className='relative'>
+                            <Link to={`${item.href}`} className='relative'>
                                 <img src={item.img} className='w-full imgs-collections h-64 md:h-96 object-cover object-center' alt={item.collectionName} />
 
                                 <button className=' whitespace-nowrap collectionbtns'>{item.collectionName}</button>
 
-                            </div>
+                            </Link>
                         </div>
                     ))}
                 </div>

@@ -5,6 +5,7 @@ import NewArrival from '../../components/Collections/New Arrival/NewArrival'
 import CollectionWithBanner from '../../components/Collections/CollectionWithBanner/CollectionWithBanner'
 import WeeksHighlight from '../../components/Collections/WeekHighlight/WeeksHighlight'
 import QualityFooter from '../../components/Others/QualityFooter'
+import Shirt from '../../components/Collections/New Arrival/Shirt'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <NewArrival/>
         <CollectionWithBanner/>
         <WeeksHighlight/>
+        <Shirt/>
         <QualityFooter/>
     </div>
   )
